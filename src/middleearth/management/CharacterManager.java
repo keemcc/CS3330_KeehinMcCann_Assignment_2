@@ -7,8 +7,8 @@ public class CharacterManager {
 	private int size;
 	
 	public CharacterManager() {
-		characters = new MiddleEarthCharacter[1];
-		size = 1;
+		characters = new MiddleEarthCharacter[0];
+		size = 0;
 	}
 	
 	public boolean addCharacter(MiddleEarthCharacter c) {
