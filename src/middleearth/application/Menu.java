@@ -83,4 +83,11 @@ public class Menu {
 		}
 		manager.addCharacter(character);
 	}
+	public boolean validateUserInput(double input) {
+		if (input <= 0) {
+			System.out.println("Input cannot be less than or equal to 0!");
+			return false;
+		}
+		return true;
+	}
 }
