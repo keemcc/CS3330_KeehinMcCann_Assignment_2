@@ -16,8 +16,8 @@ public abstract class MiddleEarthCharacter {
 		this.power = power;
 	}
 	
-	abstract boolean attack(MiddleEarthCharacter target);
-	abstract String getRace();
+	public abstract boolean attack(MiddleEarthCharacter target);
+	public abstract String getRace();
 	
 	public void displayInfo() {
 		System.out.println("Character name = " + name);

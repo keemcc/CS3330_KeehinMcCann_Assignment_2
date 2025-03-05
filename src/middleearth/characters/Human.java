@@ -5,13 +5,13 @@ public class Human extends MiddleEarthCharacter {
 		super(name, health, power);
 	}
 	@Override
-	boolean attack(MiddleEarthCharacter target) {
+	public boolean attack(MiddleEarthCharacter target) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	String getRace() {
+	public String getRace() {
 		return "Human";
 	}
 
