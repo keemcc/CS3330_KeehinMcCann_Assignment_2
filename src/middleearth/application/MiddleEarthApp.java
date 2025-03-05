@@ -14,8 +14,10 @@ public class MiddleEarthApp {
 				menu.userAddCharacter();
 				break;
 			case 2:
+				menu.viewAllCharacters();
 				break;
 			case 3:
+				menu.updateCharacter();
 				break;
 			case 4:
 				break;
