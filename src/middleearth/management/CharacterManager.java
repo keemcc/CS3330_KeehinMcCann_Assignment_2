@@ -59,10 +59,30 @@ public class CharacterManager {
 	}
 	
 	public boolean deleteCharactrer(MiddleEarthCharacter character) {
+		int index = 0;
+		boolean found = false;
+		while (index < size) {
+			if (characters[index] == character) {
+				characters[index] = null;
+				found = true;
+				break;
+			}
+			index++;
+		}
+		if (found) {
+			while (index < size-1) {
+				characters[index] = characters[index+1];
+				index++;
+			}
+			characters[index] = null;
+			size--;
+			return true;
+		}
 		return false;
 	}
 	
 	public void displayAllCharacters() {
+		System.out.println("size = " + size);
 		for (int i = 0; i < size; i++) {
 			characters[i].displayInfo();
 		}
