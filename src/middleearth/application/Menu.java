@@ -9,33 +9,17 @@ import middleearth.characters.MiddleEarthCharacter;
 import middleearth.characters.Orc;
 import middleearth.characters.Wizard;
 import middleearth.management.CharacterManager;
+import middleearth.management.MiddleEarthCouncil;
 
 public class Menu {
-	public static Scanner scanner = new Scanner(System.in);
-	public static void mainMenu(CharacterManager manager) {
-		program:
-		while (true) {
-			displayOptions();
-			int selection = selectOption();
-			System.out.println(selection);
-			switch (selection) {
-			case 1:
-				userAddCharacter(manager);
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			default:
-				break program;
-			}
-		}
+	private Scanner scanner;
+	private CharacterManager manager;
+	public Menu(Scanner scanner) {
+		this.scanner = scanner;
+		this.manager = MiddleEarthCouncil.getInstance().getCharacterManager();
 	}
-	public static void displayOptions() {
+	
+	public int displayMainMenu() {
 		System.out.println("What would you like to do?");
 		System.out.println("----------------------------");
 		System.out.println("1. Add a new character.");
@@ -46,12 +30,13 @@ public class Menu {
 		System.out.println("6. Exit.");
 		System.out.println();
 		System.out.print("Enter a number to select: ");
+		return this.selectOption(1, 6);
 	}
-	public static int selectOption() {
+	public int selectOption(int first, int last) {
 		int tries = 3;
 		while (tries >= 0) {
 			int selection = scanner.nextInt();
-			if (selection >= 1 && selection <= 6) {
+			if (selection >= first && selection <= last) {
 				return selection;
 			}
 			System.out.println("Sorry, your selection was invalid.");
@@ -60,12 +45,12 @@ public class Menu {
 		}
 		return -1;
 	}
-	public static void userAddCharacter(CharacterManager manager) {
+	public void userAddCharacter() {
 		System.out.println("What would you like the name of the character to be?: ");
 		String name = scanner.next();
-		System.out.println("How much health will it have?: ");
+		System.out.println("How much health will " + name + " have?: ");
 		double health = scanner.nextDouble();
-		System.out.println("How much power will it have?: ");
+		System.out.println("How much power will " + name + " have?: ");
 		double power = scanner.nextDouble();
 		System.out.println("What type of character would you like to create?");
 		System.out.println("-------------------------------------------------");
