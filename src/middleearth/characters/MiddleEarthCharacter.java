@@ -21,8 +21,8 @@ public abstract class MiddleEarthCharacter {
 	
 	public void displayInfo() {
 		System.out.println("Character name = " + name);
-		System.out.println("Character health = " + health);
-		System.out.println("Character power = " + power);
+		//System.out.println("Character health = " + health);
+		//System.out.println("Character power = " + power);
 	}
 	public double getPower() {
 		return power;
