@@ -10,6 +10,11 @@ public abstract class MiddleEarthCharacter {
 		health = -1;
 		power = -1;
 	}
+	public MiddleEarthCharacter(String name, double health, double power) {
+		this.name = name;
+		this.health = health;
+		this.power = power;
+	}
 	
 	abstract boolean attack(MiddleEarthCharacter target);
 	abstract String getRace();
