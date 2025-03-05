@@ -11,6 +11,10 @@ public class CharacterManager {
 	}
 	
 	public boolean addCharacter(MiddleEarthCharacter c) {
+		//System.out.println("Size of array is " + size);
+		if (characters != null) {
+			System.out.println("Length of array is " + characters.length);
+		}
 		if (size == 0) {
 			size = 1;
 			characters = new MiddleEarthCharacter[1];
@@ -43,6 +47,8 @@ public class CharacterManager {
 	}
 	
 	public void displayAllCharacters() {
-		//Displays all characters
+		for (int i = 0; i < size; i++) {
+			characters[i].displayInfo();
+		}
 	}
 }
