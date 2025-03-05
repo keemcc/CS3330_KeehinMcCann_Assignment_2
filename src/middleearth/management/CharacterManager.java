@@ -35,6 +35,11 @@ public class CharacterManager {
 	}
 	
 	public MiddleEarthCharacter getCharacter(String name) {
+		for (int i = 0; i < size; i++) {
+			if (characters[i].getName() == name) {
+				return characters[i];
+			}
+		}
 		return null;
 	}
 	
