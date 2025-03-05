@@ -35,16 +35,19 @@ public class CharacterManager {
 	}
 	
 	public MiddleEarthCharacter getCharacter(String name) {
+		System.out.println("Searching for " + name);
 		for (int i = 0; i < size; i++) {
-			if (characters[i].getName() == name) {
+			if (characters[i].getName().equals(name)) {
 				return characters[i];
+			} else {
+				System.out.println(characters[i].getName() + " is not " + name);
 			}
 		}
 		return null;
 	}
 	
 	public boolean updateCharacter (MiddleEarthCharacter character, String name, int health, int power) {
-		if ((character.getHealth() == health) && (character.getName() == name) && (character.getPower() == power)) {
+		if ((character.getHealth() == health) && (character.getName().equals(name)) && (character.getPower() == power)) {
 			return false;
 		}
 		for (int i = 0; i < size; i++) {
