@@ -6,6 +6,11 @@ public class CharacterManager {
 	private MiddleEarthCharacter[] characters;
 	private int size;
 	
+	public CharacterManager() {
+		characters = new MiddleEarthCharacter[1];
+		size = 1;
+	}
+	
 	public boolean addCharacter(MiddleEarthCharacter c) {
 		return false;
 	}
