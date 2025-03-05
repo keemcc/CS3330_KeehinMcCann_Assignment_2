@@ -123,4 +123,60 @@ public class Menu {
 		}
 		return true;
 	}
+	public boolean validateUserInput(int input) {
+		if (input <= 0) {
+			System.out.println("Input cannot be less than or equal to 0!");
+			return false;
+		}
+		return true;
+	}
+	public void viewAllCharacters() {
+		manager.displayAllCharacters();
+	}
+	public void updateCharacter() {
+		System.out.println("Please enter the name of the character you would like to update:");
+		MiddleEarthCharacter character = manager.getCharacter(scanner.next());
+		while (character == null) {
+			System.out.println("The character was not found.");
+			System.out.println("1. Retry");
+			System.out.println("2. Exit");
+			if (selectOption(1, 2) != 1) {
+				return;
+			}
+			character = manager.getCharacter(scanner.next());
+		}
+		System.out.println("What will the new name be?: ");
+		String name = scanner.next();
+		int health, power;
+		while (true) {
+			System.out.println("What will the new health be?: ");
+			if (scanner.hasNextInt()) {
+				health = scanner.nextInt();
+				if (validateUserInput(health)) {
+					break;
+				}
+			} else {
+				System.out.println("Invalid input type detected.");
+				scanner.next();
+			}
+		}
+		while (true) {
+			System.out.println("What will the new power be?: ");
+			if (scanner.hasNextInt()) {
+				power = scanner.nextInt();
+				if (validateUserInput(power)) {
+					break;
+				}
+			} else {
+				System.out.println("Invalid input type detected.");
+				scanner.next();
+			}
+		}
+		if (manager.updateCharacter(character, name, health, power)) {
+			System.out.println(name + " was successfully update");
+		} else {
+			System.out.println("You didn't make any changes!");
+		}
+		return;
+	}
 }
