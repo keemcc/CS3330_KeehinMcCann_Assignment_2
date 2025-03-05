@@ -27,4 +27,22 @@ public abstract class MiddleEarthCharacter {
 	public double getPower() {
 		return power;
 	}
+	public String getName() {
+		return name;
+	}
+	public double getHealth() {
+		return health;
+	}
+	public boolean setPower(double power) {
+		this.power = power;
+		return true;
+	}
+	public boolean setName(String name) {
+		this.name = name;
+		return true;
+	}
+	public boolean setHealth(double health) {
+		this.health = health;
+		return true;
+	}
 }
