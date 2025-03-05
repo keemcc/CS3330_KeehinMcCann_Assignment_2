@@ -35,9 +35,13 @@ public class Menu {
 	public int selectOption(int first, int last) {
 		int tries = 3;
 		while (tries >= 0) {
-			int selection = scanner.nextInt();
-			if (selection >= first && selection <= last) {
-				return selection;
+			if (scanner.hasNextInt()) {
+				int selection = scanner.nextInt();
+				if (selection >= first && selection <= last) {
+					return selection;
+				}				
+			} else {
+			scanner.next();
 			}
 			System.out.println("Sorry, your selection was invalid.");
 			System.out.println(tries + " tries remaining.");
@@ -48,10 +52,31 @@ public class Menu {
 	public void userAddCharacter() {
 		System.out.println("What would you like the name of the character to be?: ");
 		String name = scanner.next();
-		System.out.println("How much health will " + name + " have?: ");
-		double health = scanner.nextDouble();
-		System.out.println("How much power will " + name + " have?: ");
-		double power = scanner.nextDouble();
+		double health, power;
+		while (true) {
+			System.out.println("How much health will " + name + " have?: ");
+			if (scanner.hasNextDouble()) {
+				health = scanner.nextDouble();
+				if (validateUserInput(health)) {
+					break;
+				}
+			} else {
+				System.out.println("Invalid input type detected.");
+				scanner.next();
+			}
+		}
+		while (true) {
+			System.out.println("How much power will " + name + " have?: ");
+			if (scanner.hasNextDouble()) {
+				power = scanner.nextDouble();
+				if (validateUserInput(power)) {
+					break;
+				}
+			} else {
+				System.out.println("Invalid input type detected.");
+				scanner.next();
+			}
+		}
 		System.out.println("What type of character would you like to create?");
 		System.out.println("-------------------------------------------------");
 		System.out.println("1. Elf");
@@ -62,7 +87,11 @@ public class Menu {
 		System.out.println();
 		System.out.println("Enter a selection:");
 		MiddleEarthCharacter character;
-		switch (scanner.nextInt()) {
+		switch (selectOption(1, 5)) {
+		case -1:
+			System.out.println("You didn't select properly, so you create a Human!");
+			character = new Human(name, health, power);
+			break;
 		case 1:
 			character = new Elf(name, health, power);
 			break;
@@ -79,8 +108,12 @@ public class Menu {
 			character = new Human(name, health, power);
 			break;
 		default:
-			return;
+			System.out.println("You broke the program, so you create a Human!");
+			character = new Human(name, health, power);
+			break;
 		}
+		System.out.println("You created");
+		character.displayInfo();
 		manager.addCharacter(character);
 	}
 	public boolean validateUserInput(double input) {
