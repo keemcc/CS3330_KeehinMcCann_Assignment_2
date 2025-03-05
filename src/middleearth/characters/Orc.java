@@ -4,10 +4,20 @@ public class Orc extends MiddleEarthCharacter {
 	public Orc(String name, double health, double power) {
 		super(name, health, power);
 	}
+	
 	@Override
 	public boolean attack(MiddleEarthCharacter target) {
-		// TODO Auto-generated method stub
-		return false;
+		if ((target.getRace() == "Elf") || (target.getRace() == "Orc")) {
+			return false;
+		}
+		double attackDamage = this.getPower();
+		if (target.getRace() == "Human") {
+			attackDamage = attackDamage * 1.5;
+		}
+		double targetHealth = target.getHealth();
+		targetHealth = targetHealth - attackDamage;
+		target.setHealth(targetHealth);
+		return true;
 	}
 
 	@Override
