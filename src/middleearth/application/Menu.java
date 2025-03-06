@@ -198,4 +198,7 @@ public class Menu {
 			System.out.println(character.getName() + " wasn't deleted. (not found?)");
 		}
 	}
+	public void allAttack() {
+		manager.allAttack();
+	}
 }
