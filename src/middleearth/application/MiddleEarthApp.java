@@ -20,6 +20,7 @@ public class MiddleEarthApp {
 				menu.updateCharacter();
 				break;
 			case 4:
+				menu.deleteCharacter();
 				break;
 			case 5:
 				break;
