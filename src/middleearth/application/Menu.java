@@ -112,8 +112,7 @@ public class Menu {
 			character = new Human(name, health, power);
 			break;
 		}
-		System.out.println("You created");
-		character.displayInfo();
+		System.out.println("You created " + character.getName());
 		manager.addCharacter(character);
 	}
 	public boolean validateUserInput(double input) {
@@ -131,6 +130,8 @@ public class Menu {
 		return true;
 	}
 	public void viewAllCharacters() {
+		System.out.println();
+		System.out.println("Characters currently contained:");
 		manager.displayAllCharacters();
 	}
 	public void updateCharacter() {
@@ -173,7 +174,7 @@ public class Menu {
 			}
 		}
 		if (manager.updateCharacter(character, name, health, power)) {
-			System.out.println(name + " was successfully update");
+			System.out.println(name + " was successfully updated.");
 		} else {
 			System.out.println("You didn't make any changes!");
 		}
@@ -181,7 +182,7 @@ public class Menu {
 	}
 	
 	public void deleteCharacter() {
-		System.out.println("Please enter the name of the character you would like to update:");
+		System.out.println("Please enter the name of the character you would like to delete:");
 		MiddleEarthCharacter character = manager.getCharacter(scanner.next());
 		while (character == null) {
 			System.out.println("The character was not found.");

@@ -11,11 +11,8 @@ public class CharacterManager {
 	}
 	
 	public boolean addCharacter(MiddleEarthCharacter c) {
-		//System.out.println("Size of array is " + size);
-		if (characters != null) {
-			System.out.println("Length of array is " + characters.length);
-		}
 		if (size == 0) {
+			System.out.println("Character array size was 0, resizing to 1.");
 			size = 1;
 			characters = new MiddleEarthCharacter[1];
 			characters[0] = c;
@@ -23,6 +20,7 @@ public class CharacterManager {
 		}
 		
 		if (size == characters.length) {
+			System.out.println("Resizing array from " + size + " to " + (size*2));
 			MiddleEarthCharacter[] newCharacters = new MiddleEarthCharacter[(characters.length) * 2];
 			for (int i = 0; i < size; i++) {
 				newCharacters[i] = characters[i];
@@ -39,8 +37,6 @@ public class CharacterManager {
 		for (int i = 0; i < size; i++) {
 			if (characters[i].getName().equals(name)) {
 				return characters[i];
-			} else {
-				System.out.println(characters[i].getName() + " is not " + name);
 			}
 		}
 		return null;
@@ -85,7 +81,6 @@ public class CharacterManager {
 	}
 	
 	public void displayAllCharacters() {
-		System.out.println("size = " + size);
 		for (int i = 0; i < size; i++) {
 			characters[i].displayInfo();
 		}
