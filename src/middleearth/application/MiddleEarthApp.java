@@ -23,6 +23,7 @@ public class MiddleEarthApp {
 				menu.deleteCharacter();
 				break;
 			case 5:
+				menu.allAttack();
 				break;
 			default:
 				break program;
