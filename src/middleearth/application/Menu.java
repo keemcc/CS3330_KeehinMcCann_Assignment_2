@@ -179,4 +179,23 @@ public class Menu {
 		}
 		return;
 	}
+	
+	public void deleteCharacter() {
+		System.out.println("Please enter the name of the character you would like to update:");
+		MiddleEarthCharacter character = manager.getCharacter(scanner.next());
+		while (character == null) {
+			System.out.println("The character was not found.");
+			System.out.println("1. Retry");
+			System.out.println("2. Exit");
+			if (selectOption(1, 2) != 1) {
+				return;
+			}
+			character = manager.getCharacter(scanner.next());
+		}
+		if (manager.deleteCharactrer(character)) {
+			System.out.println(character.getName() + " was deleted.");
+		} else {
+			System.out.println(character.getName() + " wasn't deleted. (not found?)");
+		}
+	}
 }
