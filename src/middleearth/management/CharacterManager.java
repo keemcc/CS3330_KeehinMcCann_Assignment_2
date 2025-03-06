@@ -90,4 +90,12 @@ public class CharacterManager {
 			characters[i].displayInfo();
 		}
 	}
+	
+	public void allAttack() {
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				characters[i].attack(characters[j]);
+			}
+		}
+	}
 }
